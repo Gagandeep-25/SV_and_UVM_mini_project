@@ -14,15 +14,17 @@ class scoreboard extends uvm_scoreboard;
     tr = transaction::type_id::create("tr");
   endfunction
   
-  virtual function void write(input transaction t);
-    tr = t;
-    `uvm_info("SCO",$sformatf("recieved from monitor a : %0d , b : %0d and y : %0d",tr.a,tr.b,tr.y),UVM_NONE);
-    
-    //algorithm 
-    if(tr.y == tr.a + tr.b)
-      `uvm_info("SCO","test passed",UVM_NONE);
-    else
-      `uvm_info("SCO","Test Failed",UVM_NONE);
-    
-  endfunction
+virtual function void write(transaction t);
+  tr = t;
+  
+  `uvm_info("SCO",$sformatf("received from monitor a: %0d, b: %0d, y: %0d", tr.a, tr.b, tr.y),UVM_LOW);
+
+  // Check expected vs actual
+  if (tr.y == (tr.a + tr.b)) begin
+    `uvm_info("SCO", $sformatf("Test passed and y = %0d",tr.y), UVM_NONE)
+  end else begin
+    `uvm_error("SCO", $sformatf("Test FAILED : Expected %0d but got %0d",tr.a + tr.b, tr.y));
+  end
+endfunction
+
 endclass
