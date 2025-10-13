@@ -7,7 +7,7 @@ class transaction extends uvm_sequence_item;
   rand bit [3:0] b;
   bit [4:0] y;
   
-  function new(string path = "transaction");
+  function new(input string path = "transaction");
     super.new(path);
   endfunction
   
