@@ -12,7 +12,7 @@ class driver extends uvm_driver#(transaction);
     super.build_phase(phase);
     tc = transaction::type_id::create("tc");
     
-    if(!uvm_config_db #(virtual adder_if)::get(this,"","aif",aif))
+    if(!uvm_config_db #(virtual add_if)::get(this,"","aif",aif))
       `uvm_error("DRV","unable to access");
     
   endfunction
@@ -22,7 +22,7 @@ class driver extends uvm_driver#(transaction);
       seq_item_port.get_next_item(tc);
       
       aif.a <= tc.a;
-      aif.b <= tc.b
+      aif.b <= tc.b;
       `uvm_info("DRV",$sformatf("triggrt DUT a : %0d and b : %0d",tc.a,tc.b),UVM_NONE);
       
       seq_item_port.item_done();
