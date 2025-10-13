@@ -1,11 +1,10 @@
-
 class agent extends uvm_agent;
   `uvm_component_utils(agent)
   
   monitor m;
   driver d;
   uvm_sequencer #(transaction) seq;
-
+  
   function new(input string path = "agent", uvm_component parent = null);
     super.new(path,parent);
   endfunction
