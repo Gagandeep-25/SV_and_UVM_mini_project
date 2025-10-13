@@ -1,5 +1,5 @@
 class test extends uvm_test;
-  `uvm_component_uitls(test)
+  `uvm_component_utils(test)
   
   function new(input string path = "test", uvm_component parent = null);
     super.new(path,parent);
