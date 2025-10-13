@@ -11,10 +11,12 @@ class generator extends uvm_sequence#(transaction);
   virtual task body();
     t = transaction::type_id::create("t");
     repeat(10) begin
+      
       start_item(t);
       assert(t.randomize());
-      `uvm_info("GEN",$sformatf("sent t0 driver a: %0b and b: %0b",t.a,t.b),UVM_NONE);
+      `uvm_info("GEN",$sformatf("sent to driver a: %0d and b: %0d",t.a,t.b),UVM_NONE);
       finish_item(t);
+      
     end
   endtask
   
