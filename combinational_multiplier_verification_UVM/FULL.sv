@@ -110,7 +110,7 @@ virtual mul_if mif;
     tr = transaction::type_id::create("tr");
     send = new("send", this);
     if(!uvm_config_db#(virtual mul_if)::get(this,"","mif",mif))//uvm_test_top.env.agent.drv.aif
-      `uvm_error("drv","Unable to access Interface");
+      `uvm_error("mon","Unable to access Interface");
     endfunction
     
     
