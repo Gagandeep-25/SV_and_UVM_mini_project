@@ -39,7 +39,7 @@ class config_dff extends uvm_object;
   /*
     uvm_active_passive_enum ,a variable declaration used to store the type of agent
     there are maily two type of agent
-    1. ACTIVE AGENT = DRIVER + MONITOR (trigger DUT and collet responce)
+    1. ACTIVE AGENT = DRIVER + MONITOR + SEQUENCER (trigger DUT and collet responce)
     2. PASSIVE AGENT = MONITOR (only used to collet responce)
   */  
 
